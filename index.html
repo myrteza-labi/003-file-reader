@@ -15,19 +15,18 @@
     <script>
         const fileInput = document.getElementById('fileInput'); 
         const content = document.getElementById('content'); 
-
-        fileInput.addEventListener('change', function(e) {
+        fileInput.addEventListener('change', (e) => {
             const file = e.target.files[0]; 
 
             if (file) {
-                const reader = new FileReader(); 
-
-                reader.onload = function (event) {
+                const reader = new FileReader();
+                
+                reader.onload = (event) => {
                     const fileContent = event.target.result; 
                     content.textContent = fileContent; 
-                }
+                }; 
                 reader.readAsText(file); 
-            }
+        }
         })
     </script>
 </body>
