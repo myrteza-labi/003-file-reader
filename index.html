@@ -13,20 +13,20 @@
     <input type="file" accept=".txt" id="fileInput"/>
     <p id="content"></p>
     <script>
-        const fileInput = document.getElementById('fileInput'); 
+        const inputFile = document.getElementById('fileInput'); 
         const content = document.getElementById('content'); 
-        fileInput.addEventListener('change', (e) => {
-            const file = e.target.files[0]; 
+        const reader = new FileReader(); 
+
+        inputFile.addEventListener('change', (e) => {
+            const file = e.target.files[0]
 
             if (file) {
-                const reader = new FileReader();
-                
                 reader.onload = (event) => {
-                    const fileContent = event.target.result; 
-                    content.textContent = fileContent; 
-                }; 
-                reader.readAsText(file); 
-        }
+                const fileContent = event.target.result; 
+                content.textContent = fileContent; 
+            }
+            reader.readAsText(file)
+            }
         })
     </script>
 </body>
