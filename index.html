@@ -1,15 +1,34 @@
 <!DOCTYPE html>
-    <html>
-        <head>
-            <title>File reader - backend training</title>
-            <meta charset="utf-8"/>
-        </head>
-        <body>
-            <h1>Lecture de fichier texte</h1>
-            <p>
-                Importer un fichier de type .txt pour afficher son contenue 
-                sur la page.
-            </p>
-            <input type="file" accept=".txt"/>
-        </body>
-    </html>
+<html>
+<head>
+    <title>File reader - backend training</title>
+    <meta charset="utf-8"/>
+</head>
+<body>
+    <h1>Lecture de fichier texte</h1>
+    <p>
+        Importer un fichier de type .txt pour afficher son contenu 
+        sur la page.
+    </p>
+    <input type="file" accept=".txt" id="fileInput"/>
+    <p id="content"></p>
+    <script>
+        const fileInput = document.getElementById('fileInput'); 
+        const content = document.getElementById('content'); 
+
+        fileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0]; 
+
+            if (file) {
+                const reader = new FileReader(); 
+
+                reader.onload = function (event) {
+                    const fileContent = event.target.result; 
+                    content.textContent = fileContent; 
+                }
+                reader.readAsText(file); 
+            }
+        })
+    </script>
+</body>
+</html>
